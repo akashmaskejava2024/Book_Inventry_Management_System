@@ -1,5 +1,7 @@
 package com.nt.entity;
 
+import java.util.Date;
+
 import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Entity;
@@ -30,6 +32,9 @@ public class Book {
 	private String name;
 	private String auther;
 	private int pageCount;
+	private Date publishedDate;
+	private String publisher;
+	public String overView;
 	private String edition;
 	private String language;
 	private int price;

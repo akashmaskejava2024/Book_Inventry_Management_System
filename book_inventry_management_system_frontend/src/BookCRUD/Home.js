@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBook, getAllBooksActionCreator } from "../ActionCreator/BookActionCreator";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../NavBar/NavBar";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -25,13 +26,27 @@ const Home = () => {
         e.preventDefault();
         console.log(e.target.elements.id.value);
         const bookId = e.target.elements.id.value;
-        sessionStorage.setItem("bookId", bookId);
+        const bookToUpdate = books.find( book => book.id == parseInt(bookId));
+
+        if(bookToUpdate){
+            navigate('/BookDetails', {state : bookToUpdate});
+
+        } else {
+            alert('Book not found');
+
+        }
 
         // Add your update logic here (navigate to update page or show form, etc.)
     };
 
+  
+    
     return (
+        
         <>
+
+<Navbar></Navbar>
+
             <div className="container my-4">
                 <h2 className="text-center mb-4">Book Inventory</h2>
                 <table className="table table-striped table-bordered">

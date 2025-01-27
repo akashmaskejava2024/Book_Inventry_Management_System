@@ -1,5 +1,7 @@
 package com.nt.serviceimpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,18 @@ public class CategoryServiceImpl  implements CategoryService{
 		return null;
 		
 		
+	}
+
+	@Override
+	public List<Category> getAllCategories() {
+		
+		Iterable<Category> list= categoryRepository.findAll();
+		List<Category> categories = new ArrayList<>();
+		for(Category c : list) {
+			categories.add(c);
+		}
+		
+		return categories;
 	}
 	
 	

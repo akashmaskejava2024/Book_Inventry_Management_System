@@ -69,14 +69,18 @@ public class BookServiceImpl implements BookService {
 	public List<BookResponseDTO> addAllBook(List<BookRequestDTO> listDto) {
 
 		List<Book> booklist = new ArrayList<>();
+		
 		for (BookRequestDTO dto : listDto) {
-			booklist.add(bookMapper.toEntity(dto));
+			Book book = bookMapper.toEntity(dto);
+			book.setCategory(categoryService.getById(dto.getCategory_id()));
+			booklist.add(book);
 
 		}
 
 		Iterable<Book> iterBook = bookRepository.saveAll(booklist);
 		List<BookResponseDTO> resDtoList = new ArrayList<>();
 		for (Book b : iterBook) {
+			
 			resDtoList.add(bookMapper.toReponseDTO(b));
 
 		}

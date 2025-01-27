@@ -1,25 +1,50 @@
+import { act } from "react";
 
 const initialState = {
-    books: []
-  };
-  
-  const bookReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'getALlBooks':
-        return {
-          ...state,
-          books: [...action.payload]
-        };
+    books: [],
+    category: []
+};
 
-        case 'deleteBoook':
-            return{
+const bookReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'addNewBook':
+            return {
 
                 ...state,
-                books:  state.books.filter( book => book.id !== action.payload  )
+                books:[...state.books, action.payload]
             };
-      default:
-        return state;
+
+        case 'updateBook':
+            return {
+                ...state,
+                books: [...state.books, state.books.filter(
+                    book => (
+                        (book.id == action.payload.id) ? { ...book, ...action.payload } : book
+                    )
+                )]
+
+            };
+
+
+        case 'getALlBooks':
+            return {
+                ...state,
+                books: [...action.payload]
+            };
+        case 'getAllCategories':
+            return {
+                ...state,
+                category: [...action.payload]
+            };
+        case 'deleteBoook':
+            return {
+
+                ...state,
+                books: state.books.filter(book => book.id !== action.payload)
+            };
+        default:
+            return state;
     }
-  };
-  
-  export default bookReducer;
+};
+
+export default bookReducer;

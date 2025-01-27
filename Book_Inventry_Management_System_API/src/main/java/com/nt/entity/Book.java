@@ -1,5 +1,6 @@
 package com.nt.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.hibernate.annotations.ManyToAny;
@@ -32,7 +33,7 @@ public class Book {
 	private String name;
 	private String auther;
 	private int pageCount;
-	private Date publishedDate;
+	private LocalDate publishedDate;
 	private String publisher;
 	public String overView;
 	private String edition;

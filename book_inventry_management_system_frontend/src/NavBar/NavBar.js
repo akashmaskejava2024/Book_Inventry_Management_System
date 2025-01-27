@@ -9,16 +9,12 @@ const Navbar = () => {
                     Book Inventry Management System
                 </Link>
 
-
                 <Link className="nav-link active" aria-current="page" to={'/AddNewBook'}>
-                    <button className="btn btn-outline-success" type="submit" >
+                    <button className="btn btn-success" type="submit" >
                         AddNewBook
                     </button>
 
                 </Link>
-
-
-
             </div>
         </nav>
     );

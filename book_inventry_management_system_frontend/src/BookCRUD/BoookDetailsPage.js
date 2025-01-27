@@ -10,7 +10,7 @@ const BookDetailsPage = () => {
     const [book, setBook] = useState(initialBook);
 
     const categories = useSelector(state => state.category);
-    console.log(categories);
+    // console.log(categories);
 
     const [showImage, setShowImage] = useState(false);
 
@@ -153,7 +153,7 @@ const BookDetailsPage = () => {
                                     className="form-control"
                                     id="overview"
                                     name="overview"
-                                    value={book.overview}
+                                    value={book.overView}
                                     placeholder="Enter Overview of the Book"
                                     rows="4"
                                     onChange={handleChange}
